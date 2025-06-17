@@ -1,0 +1,83 @@
+CREATE TABLE business_unit 
+( 
+ id_bu INT AUTO_INCREMENT UNIQUE,
+ cod_bu VARCHAR(5) PRIMARY KEY,  
+ nome_bu VARCHAR(255)
+); 
+
+CREATE TABLE linha_produto 
+( 
+ id_linha_produto INT AUTO_INCREMENT UNIQUE,
+cod_bu VARCHAR(5) PRIMARY KEY, 
+cod_linha_produto VARCHAR(5),
+nome_linha_produto VARCHAR(255), 
+FOREIGN KEY (cod_bu) REFERENCES business_unit (cod_bu) 
+);
+
+CREATE TABLE produto 
+( 
+id_produto INT AUTO_INCREMENT UNIQUE,
+cod_produto VARCHAR(5) PRIMARY KEY,  
+cod_linha_produto VARCHAR(5), 
+nome_produto VARCHAR(255),
+quantidade FLOAT, 
+medida VARCHAR(100), 
+FOREIGN KEY (cod_linha_produto) REFERENCES linha_produto (cod_linha_produto),
+); 
+
+CREATE TABLE modulo 
+( 
+id_modulo INT AUTO_INCREMENT UNIQUE,
+cod_produto VARCHAR (5),  
+cod_modulo VARCHAR(5)  PRIMARY KEY,  
+nome_modulo VARCHAR(255),
+FOREIGN KEY (cod_produto) REFERENCES produto (cod_produto),
+); 
+
+CREATE TABLE produto_servico
+(
+ id_produto_servico INT AUTO_INCREMENT UNIQUE,
+ cod_produto VARCHAR (5),
+ cod_servico VARCHAR (5),
+FOREIGN KEY (cod_produto)  REFERENCES produto (cod_produto),
+FOREIGN KEY (cod_servico) REFERENCES servico (cod_servico)
+ PRIMARY KEY (cod_produto, cod_servico)
+); 
+
+CREATE TABLE servico
+(
+ id_servico INT AUTO_INCREMENT UNIQUE, 
+ cod_servico VARCHAR(5) PRIMARY KEY,  
+ nome_servico VARCHAR(255)
+); 
+
+CREATE TABLE combinacao 
+( 
+ id_combinacao INT AUTO_INCREMENT UNIQUE, 
+ cod_combinacao VARCHAR(5) PRIMARY KEY,  
+ nome_combinacao VARCHAR(255)
+); 
+
+CREATE TABLE combinacao_modulo 
+( 
+ id_combinacao_modulo INT AUTO_INCREMENT UNIQUE, 
+ cod_modulo VARCHAR (5),
+ cod_combinacao VARCHAR (5),
+ PRIMARY KEY (cod_modulo, cod_combinacao), 
+FOREIGN KEY (cod_modulo) REFERENCES modulo (cod_modulo),
+FOREIGN KEY (cod_combinacao) REFERENCES combinacao (cod_combinacao),
+); 
+
+CREATE TABLE SKU 
+(
+cod_bu VARCHAR (5), 
+cod_linha_produto VARCHAR (5),
+cod_produto_servico VARCHAR (5),
+cod_combinacao_modulo VARCHAR (5),
+FOREIGN KEY (cod_bu) REFERENCES business_unit  (cod_bu),
+FOREIGN KEY (cod_linha_produto) REFERENCES linha_produto (cod_linha_produto),
+FOREIGN KEY (cod_produto_servico) REFERENCES produto_servico (cod_produto_servico)
+FOREIGN KEY (cod_combinacao_modulo) REFERENCES combinacao_modulo (cod_combinacao_modulo)
+PRIMARY KEY(cod_bu, cod_linha_produto, cod_produto_servico, cod_combinacao_modulo)
+);
+
