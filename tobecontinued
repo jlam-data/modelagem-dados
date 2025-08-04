@@ -1,0 +1,5 @@
+TO BE CONTINUED
+No decorrer do projeto entendeu-se que era necessário primeiro criar os SKUS, fazer testes e validações junto à área de negócios e os diferentes setores, para depois entender quais combinações podem ser feitas. 
+Pensando no futuro do projeto, ou seja, nos desdobramentos de tarefas que vão vir do projeto de SKUs, já ficam previstas algumas configurações de SKU. 
+Foram utilizados apenas números de 1 a 9. Os zeros foram reservados para uma outra tabela, que será desenvolvida futuramente, com objetivo de alocar as combinações de sistemas mais completas - como se fossem matrizes das quais todas as outras combinações derivam. 
+Dessa forma, deixamos "reservados" esses SKUs para o futuro. 
