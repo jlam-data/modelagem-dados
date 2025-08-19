@@ -1,0 +1,9 @@
+ADENDO AO DETALHAMENTO TÉCNICO
+
+Considerando etapas futuras (desdobramentos do trabalho), foi pensado um modo de reservar algumas chaves primárias. Assim, na lógica de nomeação das chaves primárias (alfanuméricas) não foram utilizadas:
+- 3 letras sequenciais repetidas;
+- 00 (dois zeros repetidos) ou 000 (três zeros consecutivos).
+
+Isso porque essas condições serão utilizadas para produtos completos, como se fossem matrizes de formação de outros produtos (com diferentes combinações de módulos e menos completos). 
+
+Por esse motivo, no cálculo das probabilidades de registros foram consideradas alternativas de 1 a 9 por caracter numérico (e não de 0 a 9). 
